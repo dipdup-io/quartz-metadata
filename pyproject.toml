@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "quartz-metadata"
+version = "0.1.0"
+description = "Adapter for Quartz metadata"
+authors = ["Igor Sereda <sereda.igor.s@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dipdup = {git = "https://github.com/dipdup-net/dipdup-py.git", branch = "tmp/quartz-metadata"}
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.931"
+isort = "^5.10.1"
+flakeheaven = "^0.11.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
