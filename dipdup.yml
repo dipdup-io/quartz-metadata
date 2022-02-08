@@ -1,0 +1,49 @@
+spec_version: 1.2
+package: quartz_metadata
+
+database:
+  kind: postgres
+  host: db
+  port: 5432
+  user: ${POSTGRES_USER:-dipdup}
+  password: ${POSTGRES_PASSWORD:-changeme}
+  database: ${POSTGRES_DB:-dipdup}
+
+hasura:
+  url: http://hasura:8080
+  admin_secret: ${ADMIN_SECRET:-changeme}
+  select_limit: ${SELECT_LIMIT:-1000}
+  camel_case: true
+  allow_aggregations: false
+  rest: true
+
+contracts:
+  quartz_minter_mainnet:
+    address: KT1TnVQhjxeNvLutGvzwZvYtC7vKRpwPWhc6
+    typename: ubisoft_quartz_minter
+
+datasources:
+  tzkt_mainnet:
+    kind: tzkt
+    url: https://api.tzkt.io
+
+indexes:
+  mint_operations:
+    kind: operation
+    datasource: tzkt_mainnet
+    contracts:
+      - quartz_minter_mainnet
+    handlers:
+      - callback: on_mint
+        pattern:
+          - destination: quartz_minter_mainnet
+            entrypoint: mint
+
+hooks:
+  resolve_token_metadata:
+    callback: resolve_token_metadata
+
+jobs:
+  resolver_job:
+    hook: resolve_token_metadata
+    daemon: True
