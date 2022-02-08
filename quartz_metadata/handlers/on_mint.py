@@ -2,6 +2,7 @@ from dipdup.context import HandlerContext
 from dipdup.models import Transaction
 from tortoise.exceptions import IntegrityError
 
+from quartz_metadata.manager import ResolveMetadataTaskManager
 from quartz_metadata.models import ResolveToken
 from quartz_metadata.types.ubisoft_quartz_minter.parameter.mint import MintParameter
 from quartz_metadata.types.ubisoft_quartz_minter.storage import (
@@ -19,9 +20,12 @@ async def on_mint(
 
     try:
         await ResolveToken.create(
+            network=ctx.datasource.network,
             contract=contract,
             token_id=token_id,
             token_metadata_uri=token_metadata_uri,
         )
     except IntegrityError:
         pass
+
+    await ResolveMetadataTaskManager.process_resolve_tasks(ctx)

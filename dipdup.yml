@@ -26,6 +26,8 @@ datasources:
   tzkt_mainnet:
     kind: tzkt
     url: https://api.tzkt.io
+  aleph:
+    kind: http
 
 indexes:
   mint_operations:
@@ -40,10 +42,17 @@ indexes:
             entrypoint: mint
 
 hooks:
-  resolve_token_metadata:
-    callback: resolve_token_metadata
+  resolve_task_manager:
+    callback: resolve_task_manager
+  resolver_job:
+    callback: resolver_job
 
 jobs:
   resolver_job:
-    hook: resolve_token_metadata
+    hook: resolver_job
     daemon: True
+
+advanced:
+  metadata_interface: True
+  scheduler:
+    apscheduler.job_defaults.max_instances: 3

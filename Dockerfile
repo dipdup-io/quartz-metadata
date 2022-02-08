@@ -31,6 +31,7 @@ RUN apt-get update \
         curl \
         # deps for building python deps
         build-essential \
+        git \
     \
     # install poetry
  && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - \
