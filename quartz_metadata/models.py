@@ -26,7 +26,7 @@ class ResolveToken(Model):
                 failures_count__lt=Const.failures_limit,
             )
             .order_by("created_at")
-            .limit(Const.token_chunk_size)
+            .limit(Const.select_chunk_size)
         )
 
     async def set_resolved(self):
