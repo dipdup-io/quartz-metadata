@@ -24,7 +24,7 @@ contracts:
 datasources:
   tzkt_mainnet:
     kind: tzkt
-    url: https://api.tzkt.io
+    url: ${TZKT_URL:-https://api.tzkt.io}
   aleph:
     kind: http
 
@@ -55,3 +55,9 @@ advanced:
   metadata_interface: True
   scheduler:
     apscheduler.job_defaults.max_instances: 3
+  reindex:
+    manual: wipe
+    migration: exception
+    rollback: exception
+    config_modified: ignore
+    schema_modified: ignore
