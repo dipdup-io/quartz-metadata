@@ -27,6 +27,7 @@ datasources:
     url: ${TZKT_URL:-https://api.tzkt.io}
   aleph:
     kind: http
+    url: ''
 
 indexes:
   mint_operations:
