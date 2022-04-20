@@ -3,7 +3,7 @@ package: quartz_metadata
 
 database:
   kind: postgres
-  host: db
+  host: ${POSTGRES_HOST:-db}
   port: 5432
   user: ${POSTGRES_USER:-dipdup}
   password: ${POSTGRES_PASSWORD:-changeme}
