@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-dipdup = {git = "https://github.com/dipdup-net/dipdup-py.git", branch = "tmp/quartz-metadata"}
+dipdup = "5.0.1"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.931"

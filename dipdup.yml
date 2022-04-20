@@ -56,8 +56,8 @@ advanced:
   scheduler:
     apscheduler.job_defaults.max_instances: 3
   reindex:
-    manual: wipe
+    manual: exception
     migration: exception
-    rollback: exception
+    rollback: ignore
     config_modified: ignore
     schema_modified: ignore
