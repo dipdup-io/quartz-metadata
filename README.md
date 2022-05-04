@@ -20,3 +20,11 @@ dipdup run
 ```commandline
 docker-compose up -d
 ```
+
+## GraphQL client
+
+```
+npm i @dipdup/quartz
+```
+
+Read [how to use](./client/README.md) the GraphQL client for the Ubisoft Quartz metadata service.
