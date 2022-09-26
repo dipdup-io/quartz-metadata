@@ -21,7 +21,8 @@ mypy:
 lint: isort black flake mypy
 
 up:
-	docker-compose up -d
+	docker-compose up -d db hasura
 
 down:
 	docker-compose down -v
+

@@ -1,5 +1,6 @@
-from tortoise import Model, fields
+from tortoise import fields
 from tortoise.queryset import QuerySet
+from dipdup.models import Model
 
 from quartz_metadata.const import ResolveTokenMetadataConst as Const
 
