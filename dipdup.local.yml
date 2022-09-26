@@ -1,0 +1,25 @@
+database:
+  kind: postgres
+  host: localhost
+  port: 5432
+  user: ${POSTGRES_USER:-dipdup}
+  password: ${POSTGRES_PASSWORD:-changeme}
+  database: ${POSTGRES_DB:-dipdup}
+
+hasura:
+  url: http://localhost:49180
+  admin_secret: ${ADMIN_SECRET:-changeme}
+  select_limit: ${SELECT_LIMIT:-10000}
+  allow_aggregations: false
+  rest: true
+
+advanced:
+  metadata_interface: True
+  scheduler:
+    apscheduler.job_defaults.max_instances: 3
+  reindex:
+    manual: exception
+    migration: exception
+    rollback: exception
+    config_modified: exception
+    schema_modified: exception
